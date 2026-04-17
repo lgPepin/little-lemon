@@ -1,10 +1,11 @@
 import logoLittleLemon from "../assets/logo-little-lemon.svg";
+import styles from "./Nav.module.css";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav className={styles.flexNavContainer}>
       <img src={logoLittleLemon} alt="Little Lemon logo" />
-      <ul>
+      <ul className={styles.flexListContainer}>
         <li>
           <a href="/">Home</a>
         </li>
