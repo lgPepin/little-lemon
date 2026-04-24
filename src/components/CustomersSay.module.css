@@ -1,0 +1,26 @@
+.customerComentsContainer {
+  background-color: #fbdabb;
+  border: 2px solid #ee9972;
+  height: auto;
+  border-radius: 5px;
+}
+
+.titleComment {
+  text-align: center;
+}
+
+.customerPostsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.customerPostCard {
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 20rem;
+  height: auto;
+  margin: 0 auto
+}

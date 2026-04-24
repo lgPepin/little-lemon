@@ -1,0 +1,24 @@
+.chicagoContainer {
+  background-color: #495e57;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+.chicagoTextContainer {
+  width: 50vh;
+  margin-top: 4rem;
+}
+
+.h2TextChicago {
+  color: #f4ce14;
+  font-size: 2rem;
+  margin-bottom: -0.25rem;
+  margin-top: -0.5rem;
+}
+
+.imgChicago {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}

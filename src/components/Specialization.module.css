@@ -1,0 +1,13 @@
+.titlePromotion {
+  text-align: center;
+}
+
+.card {
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 20rem;
+  height: auto;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #f4ce14;
+}

@@ -1,5 +1,6 @@
 import logoLittleLemon from "../assets/logo-little-lemon.svg";
 import styles from "./Nav.module.css";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
@@ -7,22 +8,22 @@ const Nav = () => {
       <img src={logoLittleLemon} alt="Little Lemon logo" />
       <ul className={styles.flexListContainer}>
         <li>
-          <a href="/">Home</a>
+          <Link to="/">HomePage</Link>
         </li>
         <li>
-          <a href="/about">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <a href="/menu">Menu</a>
+          <Link to="/menu">Menu</Link>
         </li>
         <li>
-          <a href="/reservations">Reservations</a>
+          <Link to="/booking">Booking</Link>
         </li>
         <li>
-          <a href="/orderOnline">Order Online</a>
+          <Link to="/orderOnline">Order Online</Link>
         </li>
         <li>
-          <a href="/login">Login</a>
+          <Link to="login">Login</Link>
         </li>
       </ul>
     </nav>
