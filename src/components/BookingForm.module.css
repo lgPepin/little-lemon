@@ -1,0 +1,92 @@
+.formContainer {
+  background-color: #495e57;
+  padding: 3rem 20rem;
+}
+
+.bookingForm {
+  display: grid;
+  max-width: 1fr;
+  gap: 20px;
+  margin: 0 auto;
+}
+
+.bookingForm h2 {
+  text-align: center;
+  color: #f4ce14;
+  font-size: 3rem;
+}
+
+.bookingForm label {
+  color: #f4ce14;
+  font-size: 2rem;
+}
+
+.bookingForm input,
+.bookingForm select {
+  height: 6vh;
+  font-size: 1rem;
+}
+
+.bookingForm button {
+  max-width: 300px;
+  margin: 3rem auto 0;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: #f4ce14;
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    padding: 1rem 5rem;
+  }
+
+  .bookingForm h2 {
+    font-size: 1.2rem;
+  }
+
+  .bookingForm label {
+    font-size: 1rem;
+  }
+
+  .bookingForm button {
+    width: 250px;
+    padding: 0.8rem 1rem;
+  }
+
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+   .formContainer {
+    padding: 2rem 10rem;
+  }
+
+  .bookingForm h2 {
+    font-size: 1.5rem;
+  }
+
+  .bookingForm label {
+    font-size: 1.2rem;
+  }
+
+  .bookingForm button {
+    width: 260px;
+    padding: 1rem 2rem;
+  }
+
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .bookingForm h2 {
+    font-size: 2rem;
+  }
+
+  .bookingForm label {
+    font-size: 1.5rem;
+  }
+
+  .bookingForm button {
+    width: 280px;
+  }
+}

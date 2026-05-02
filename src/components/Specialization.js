@@ -28,8 +28,15 @@ const Specialization = () => {
 
   return (
     <>
-      <h2 className={styles.titlePromotion}>THIS WEEKS SPECIALS !!!</h2>
-      <article className={styles.card}>
+      <h2 id="specials-title" className={styles.titlePromotion}>
+        THIS WEEKS SPECIALS !!!
+      </h2>
+      <article
+        className={styles.card}
+        role="region"
+        aria-labelledby="specials-title"
+        aria-live="polite"
+      >
         <h2>{data[currentIndex].promotionName}</h2>
         <p>{data[currentIndex].promotionText}</p>
       </article>
