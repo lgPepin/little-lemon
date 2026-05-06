@@ -1,4 +1,5 @@
 import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 import styles from "./BookingForm.module.css";
 
 const BookingForm = (props) => {
@@ -6,6 +7,8 @@ const BookingForm = (props) => {
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("");
+
+  // const navigate = useNavigate();
 
   function handleGuests(e) {
     const value = e.target.value;
@@ -17,10 +20,13 @@ const BookingForm = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const formData = { date, time, guests, occasion };
+    props.onSubmit(formData);
     setDate("");
     setTime("");
     setGuests(1);
     setOccasion("");
+    // navigate("/confirmedBooking");
   }
 
   function handleDateChange(e) {

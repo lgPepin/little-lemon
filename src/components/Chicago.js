@@ -4,7 +4,7 @@ import chicagoPicture from "../assets/chicago_picture.jpg";
 const Chicago = () => {
   return (
     <div className={styles.chicagoContainer}>
-      <div class={styles.chicagoTextContainer}>
+      <div className={styles.chicagoTextContainer}>
         <h2 className={styles.h2TextChicago}>
           Little Lemon Restaurant: A family story
         </h2>

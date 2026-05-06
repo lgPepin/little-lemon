@@ -1,23 +1,36 @@
 import BookingForm from "./BookingForm";
 import { useReducer } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchAPI, submitAPI } from "../api";
 
 export const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00", "22:00"];
+  return fetchAPI(new Date());
 };
 
 export const updateTimes = (state, action) => {
-  if (action.type === "DATE_CHANGED") return initializeTimes();
+  if (action.type === "DATE_CHANGED") {
+    return fetchAPI(new Date(action.date));
+  }
   return state;
 };
 
 const BookingPage = () => {
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
+  const navigate = useNavigate();
+
+  const submitForm = (formData) => {
+    const success = submitAPI(formData);
+    if (success) {
+      navigate("/confirmedBooking");
+    }
+  };
 
   return (
     <>
       <BookingForm
         availableTimes={availableTimes}
         onDateChange={(date) => dispatch({ type: "DATE_CHANGED", date })}
+        onSubmit={submitForm}
       />
     </>
   );
