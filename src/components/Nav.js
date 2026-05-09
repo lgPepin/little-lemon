@@ -1,6 +1,8 @@
 import logoLittleLemon from "../assets/logo-little-lemon.svg";
 import styles from "./Nav.module.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const getNavClass = ({ isActive }) => (isActive ? styles.active : "");
 
 const Nav = () => {
   return (
@@ -8,22 +10,34 @@ const Nav = () => {
       <img src={logoLittleLemon} alt="Little Lemon logo" />
       <ul className={styles.flexListContainer}>
         <li>
-          <Link to="/">HomePage</Link>
+          <NavLink to="/" end className={getNavClass}>
+            HomePage
+          </NavLink>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <NavLink to="/about" className={getNavClass}>
+            About
+          </NavLink>
         </li>
         <li>
-          <Link to="/menu">Menu</Link>
+          <NavLink to="/menu" className={getNavClass}>
+            Menu
+          </NavLink>
         </li>
         <li>
-          <Link to="/booking">Booking</Link>
+          <NavLink to="/booking" className={getNavClass}>
+            Booking
+          </NavLink>
         </li>
         <li>
-          <Link to="/orderOnline">Order Online</Link>
+          <NavLink to="/orderOnline" className={getNavClass}>
+            Order Online
+          </NavLink>
         </li>
         <li>
-          <Link to="login">Login</Link>
+          <NavLink to="login" className={getNavClass}>
+            Login
+          </NavLink>
         </li>
       </ul>
     </nav>

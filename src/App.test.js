@@ -76,3 +76,86 @@ test("can submit the form when all required fields are filled", () => {
   expect(guestsInput.value).toBe("1");
   expect(occasionSelect.value).toBe("");
 });
+
+test("guests input has correct HTML5 validation attributes", () => {
+  render(
+    <BookingForm
+      availableTimes={[]}
+      onDateChange={jest.fn()}
+      onSubmit={jest.fn()}
+    />,
+  );
+  const guestsInput = screen.getByLabelText(/Number of guests/);
+  expect(guestsInput).toHaveAttribute("type", "number");
+  expect(guestsInput).toHaveAttribute("min", "1");
+  expect(guestsInput).toHaveAttribute("max", "10");
+  expect(guestsInput).toHaveAttribute("aria-required", "true");
+});
+
+test("date input has correct HTML5 validation attributes", () => {
+  render(
+    <BookingForm
+      availableTimes={[]}
+      onDateChange={jest.fn()}
+      onSubmit={jest.fn()}
+    />,
+  );
+  const dateInput = screen.getByLabelText("Choose date");
+  expect(dateInput).toHaveAttribute("type", "date");
+  expect(dateInput).toHaveAttribute("aria-required", "true");
+  expect(dateInput).toHaveAttribute("id", "res-date");
+  expect(dateInput).toHaveAttribute("name", "res-date");
+});
+
+test("time select has correct HTML5 validation attributes", () => {
+  render(
+    <BookingForm
+      availableTimes={["18:00"]}
+      onDateChange={jest.fn()}
+      onSubmit={jest.fn()}
+    />,
+  );
+  const timeSelect = screen.getByLabelText("Choose time");
+  expect(timeSelect).toHaveAttribute("aria-required", "true");
+  expect(timeSelect).toHaveAttribute("id", "res-time");
+  expect(timeSelect).toHaveAttribute("name", "res-time");
+});
+
+test("occasion select has correct HTML5 validation attributes", () => {
+  render(
+    <BookingForm
+      availableTimes={["18:00"]}
+      onDateChange={jest.fn()}
+      onSubmit={jest.fn()}
+    />,
+  );
+  const occasionSelect = screen.getByLabelText("Occasion");
+  expect(occasionSelect).toHaveAttribute("aria-required", "true");
+  expect(occasionSelect).toHaveAttribute("id", "occasion");
+  expect(occasionSelect).toHaveAttribute("name", "occasion");
+});
+
+test("submit button is disabled when form is invalid", () => {
+  render(
+    <BookingForm
+      availableTimes={["18:00"]}
+      onDateChange={jest.fn()}
+      onSubmit={jest.fn()}
+    />,
+  );
+  const submitButton = screen.getByText("Make your reservation");
+  expect(submitButton).toBeDisabled();
+});
+
+test("guests input ignores values outside 1-10 range", () => {
+  render(
+    <BookingForm
+      availableTimes={[]}
+      onDateChange={jest.fn()}
+      onSubmit={jest.fn()}
+    />,
+  );
+  const guestsInput = screen.getByLabelText(/Number of guests/);
+  fireEvent.change(guestsInput, { target: { value: "15" } });
+  expect(guestsInput.value).toBe("1"); // la valeur ne change pas
+});

@@ -25,12 +25,17 @@ const BookingPage = () => {
     }
   };
 
+  const handleCancel = () => {
+    navigate("/");
+  };
+
   return (
     <>
       <BookingForm
         availableTimes={availableTimes}
         onDateChange={(date) => dispatch({ type: "DATE_CHANGED", date })}
         onSubmit={submitForm}
+        onClick={handleCancel}
       />
     </>
   );

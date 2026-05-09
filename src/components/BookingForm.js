@@ -1,5 +1,5 @@
-import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import ConfirmModal from "./ConfirmModal";
 import styles from "./BookingForm.module.css";
 
 const BookingForm = (props) => {
@@ -7,12 +7,20 @@ const BookingForm = (props) => {
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
-  // const navigate = useNavigate();
+  useEffect(() => {
+    setIsFormValid(!!(date && time && occasion && guests));
+  }, [date, time, occasion, guests]);
 
   function handleGuests(e) {
     const value = e.target.value;
-    const numericValue = value === "" ? 1 : Number(value);
+    if (value === "") {
+      setGuests("");
+      return;
+    }
+    const numericValue = Number(value);
     if (!isNaN(numericValue) && numericValue >= 1 && numericValue <= 10) {
       setGuests(numericValue);
     }
@@ -20,13 +28,17 @@ const BookingForm = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setShowConfirm(true);
+  }
+
+  function handleConfirm() {
     const formData = { date, time, guests, occasion };
     props.onSubmit(formData);
     setDate("");
     setTime("");
     setGuests(1);
     setOccasion("");
-    // navigate("/confirmedBooking");
+    setShowConfirm(false);
   }
 
   function handleDateChange(e) {
@@ -37,6 +49,17 @@ const BookingForm = (props) => {
 
   return (
     <div className={styles.formContainer}>
+      {showConfirm && (
+        <ConfirmModal
+          date={date}
+          time={time}
+          guests={guests}
+          occasion={occasion}
+          onConfirm={handleConfirm}
+          onCancel={() => setShowConfirm(false)}
+        />
+      )}
+
       <form
         className={styles.bookingForm}
         onSubmit={handleSubmit}
@@ -44,7 +67,7 @@ const BookingForm = (props) => {
       >
         <h2 id="form-title">Book your table now!</h2>
 
-        <label htmlFor="res-date">Choose date</label>
+        <label htmlFor="res-date">Choose date*</label>
         <input
           type="date"
           id="res-date"
@@ -52,15 +75,17 @@ const BookingForm = (props) => {
           onChange={handleDateChange}
           value={date}
           aria-required="true"
+          aria-describedby="error-message"
         />
 
-        <label htmlFor="res-time">Choose time</label>
+        <label htmlFor="res-time">Choose time*</label>
         <select
           id="res-time"
           name="res-time"
           onChange={(e) => setTime(e.target.value)}
           value={time}
           aria-required="true"
+          aria-describedby="error-message"
         >
           <option value="">--Choose time--</option>
           {props.availableTimes.map((timeOption) => (
@@ -70,7 +95,7 @@ const BookingForm = (props) => {
           ))}
         </select>
 
-        <label htmlFor="guests">Number of guests (Between 1 and 10)</label>
+        <label htmlFor="guests">Number of guests* (Between 1 and 10)</label>
         <input
           type="number"
           min={1}
@@ -80,29 +105,48 @@ const BookingForm = (props) => {
           onChange={handleGuests}
           value={guests}
           aria-required="true"
-          aria-describedby="guests-desc"
+          aria-describedby="error-message"
         />
 
-        <label htmlFor="occasion">Occasion</label>
+        <label htmlFor="occasion">Occasion*</label>
         <select
           id="occasion"
           name="occasion"
           onChange={(e) => setOccasion(e.target.value)}
           value={occasion}
           aria-required="true"
+          aria-describedby="error-message"
         >
           <option value="">--Choose occasion--</option>
           <option value="Birthday">Birthday</option>
           <option value="Anniversary">Anniversary</option>
         </select>
 
-        <button
-          type="submit"
-          disabled={!date || !time || !occasion}
-          aria-disabled={!date || !time || !occasion}
+        <p
+          className={`${styles.messageToAccessValidationButton} ${isFormValid ? styles.hideMessage : ""}`}
+          id="error-message"
+          aria-live="polite"
         >
-          Make your reservation
-        </button>
+          All the fields must be completed to access the validation button
+        </p>
+
+        <div className={styles.buttonGroup}>
+          <button
+            type="submit"
+            disabled={!isFormValid}
+            aria-disabled={!isFormValid}
+            aria-label="On Click"
+          >
+            Make your reservation
+          </button>
+          <button
+            type="button"
+            aria-label="Cancel reservation and go to home"
+            onClick={props.onClick}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

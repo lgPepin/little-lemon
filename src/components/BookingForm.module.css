@@ -1,6 +1,6 @@
 .formContainer {
   background-color: #495e57;
-  padding: 3rem 20rem;
+  padding: 3rem 18rem;
 }
 
 .bookingForm {
@@ -27,19 +27,49 @@
   font-size: 1rem;
 }
 
-.bookingForm button {
-  max-width: 300px;
-  margin: 3rem auto 0;
+button {
+  width: 300px;
+  margin: 1rem auto 0;
   padding: 1rem 3rem;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 5px;
   background-color: #f4ce14;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: center;
+}
+
+button[type="button"] {
+  background-color: #ee9972;
+}
+
+.messageToAccessValidationButton {
+  margin: 1rem auto 0;
+  color: #ee9972;
+  font-size: 1.5rem;
+  text-align: center;
+  max-height: 30px;
+  transition:
+    opacity 0.5s ease-out,
+    max-height 0.5s ease-out,
+    margin 0.5s ease-out;
+}
+
+.hideMessage {
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  visibility: hidden;
 }
 
 @media (max-width: 480px) {
   .formContainer {
-    padding: 1rem 5rem;
+    padding: 1rem 3rem;
   }
 
   .bookingForm h2 {
@@ -55,11 +85,19 @@
     padding: 0.8rem 1rem;
   }
 
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .messageToAccessValidationButton {
+    font-size: 1rem;
+  }
+
 }
 
 @media (max-width: 768px) and (min-width: 481px) {
    .formContainer {
-    padding: 2rem 10rem;
+    padding: 2rem 7rem;
   }
 
   .bookingForm h2 {
@@ -75,9 +113,20 @@
     padding: 1rem 2rem;
   }
 
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .messageToAccessValidationButton {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
+  .formContainer {
+    padding: 2rem 10rem;
+  }
+
   .bookingForm h2 {
     font-size: 2rem;
   }
@@ -88,5 +137,19 @@
 
   .bookingForm button {
     width: 280px;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1025px) {
+  .formContainer {
+    padding: 2rem 14rem;
+  }
+
+  .buttonGroup {
+    flex-direction: column;
   }
 }
