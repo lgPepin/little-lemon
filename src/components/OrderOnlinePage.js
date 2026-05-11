@@ -1,7 +1,9 @@
 const OrderOnlinePage = () => {
   return (
     <>
-      <p>This the order online page</p>
+      <p style={{ backgroundColor: "#495e57", color: "#fff" }}>
+        This the order online page
+      </p>
     </>
   );
 };

@@ -1,7 +1,9 @@
-import styles from "./CallToAction.module.css";
+import { useNavigate } from "react-router-dom";
 import heroSectionPicture from "../assets/hero_section_picture.png";
+import styles from "./CallToAction.module.css";
 
 function CallToAction() {
+  const navigate = useNavigate();
   return (
     <div className={styles.heroSection}>
       <div className={styles.textHeroSection}>
@@ -10,7 +12,10 @@ function CallToAction() {
           We are a family owned Mediterranean restaurant, focused on traditional
           recipies served with a modern twist
         </p>
-        <button className={styles.buttonTextHeroSection}>
+        <button
+          className={styles.buttonTextHeroSection}
+          onClick={() => navigate("/booking")}
+        >
           Reserve a table
         </button>
       </div>

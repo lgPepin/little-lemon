@@ -26,7 +26,7 @@ const Nav = () => {
         </li>
         <li>
           <NavLink to="/booking" className={getNavClass}>
-            Booking
+            Booking table
           </NavLink>
         </li>
         <li>

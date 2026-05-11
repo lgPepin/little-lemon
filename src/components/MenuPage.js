@@ -1,7 +1,9 @@
 const MenuPage = () => {
   return (
     <>
-      <p>THis is the menu of the Little Limon restaurant</p>
+      <p style={{ backgroundColor: "#495e57", color: "#fff" }}>
+        This is the menu of the Little Limon restaurant
+      </p>
     </>
   );
 };

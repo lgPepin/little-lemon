@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import bigLogoLittleLemon from "../assets/big-logo-little-lemon.png";
 import styles from "./Footer.module.css";
 
@@ -7,22 +8,22 @@ const Footer = () => {
       <img src={bigLogoLittleLemon} alt="Big logo of Little Lemon restaurant" />
       <ul>
         <li>
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="/about">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <a href="/menu">Menu</a>
+          <Link to="/menu">Menu</Link>
         </li>
         <li>
-          <a href="/reservation">Reservation</a>
+          <Link to="booking">Booking table</Link>
         </li>
         <li>
-          <a href="/orderOnline">Order Online</a>
+          <Link to="orderOnline">Order Online</Link>
         </li>
         <li>
-          <a href="/login">Login</a>
+          <Link to="/login">Login</Link>
         </li>
       </ul>
       <ul>
